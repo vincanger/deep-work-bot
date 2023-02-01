@@ -13,7 +13,7 @@ type Command = {
 };
 
 const commands: { [name: string]: Command } = {
-  help: {
+  deepworkhelp: {
     description: 'Shows the list of commands and their details.',
     format: 'deepworkhelp',
   },
