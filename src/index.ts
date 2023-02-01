@@ -11,7 +11,7 @@ const client = new Client({
   presence: {
     status: 'online',
     activities: [{
-      name: `${prefix}help`,
+      name: `${prefix}deepworkhelp`,
       type: 'LISTENING'
     }]
   }
