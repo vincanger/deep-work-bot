@@ -67,7 +67,7 @@ client.on('messageCreate', async (message) => {
     const command = args.shift();
 
     switch(command) {
-      case 'help':
+      case 'deepworkhelp':
         const embed = helpCommand(message);
         embed.setThumbnail(client.user!.displayAvatarURL());
         await message.channel.send({ embeds: [embed] });
