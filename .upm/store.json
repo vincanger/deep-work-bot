@@ -1,1 +1,0 @@
-{"version":2,"languages":{"nodejs-npm":{"specfileHash":"3b09ed0db60e55c6b54188cb6610ea60","lockfileHash":"ab988cdb6da6d18a47733ec1e6738eca","guessedImports":["discord.js","tslib","@replit/database","@prisma/client"],"guessedImportsHash":"4e68b3ba88f56a1b2eb07d544bb12e28"}}}

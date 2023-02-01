@@ -1,4 +1,6 @@
 .env
 .replit
+.cache
+.upm
 replit.nix
 /node_modules
