@@ -2,5 +2,6 @@
 .replit
 .cache
 .upm
+.DS_Store
 replit.nix
 /node_modules
