@@ -20,7 +20,7 @@ const client = new Client({
 let ROLE_ID = process.env.ROLE_ID;
 let CHANNEL_ID = process.env.CHANNEL_ID;
 
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV !== 'production') {
   ROLE_ID = '1050366058785148999';
   CHANNEL_ID = '839900450110963744';
 }
