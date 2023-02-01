@@ -1,7 +1,7 @@
 import { Client, Message } from 'discord.js';
 import config from './config';
 import {helpCommand, deepWorkCommand, deepWorkTimeLeft, deepWorkWorkingNow, deepWorkURL} from './commands';
-import * as dotenv from 'dotenv'; // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
+import * as dotenv from 'dotenv';
 dotenv.config();
 
 const { intents, prefix, token } = config;
@@ -17,19 +17,25 @@ const client = new Client({
   }
 });
 
+let ROLE_ID = process.env.ROLE_ID;
+let CHANNEL_ID = process.env.CHANNEL_ID;
+
+if (process.env.NODE_ENV === 'development') {
+  ROLE_ID = '1050366058785148999';
+  CHANNEL_ID = '839900450110963744';
+}
+
 client.on('ready', () => {
   console.log(`Logged in as: ${client.user?.tag}`);
   console.log(`process: ${process.env}`);
 });
 
 client.on("presenceUpdate", async (_, newPresence) => {
-  // if (newPresence?.member?.roles.cache.has("1050366058785148999")) {
-    // TODO: change ID for correct server role // for testing : "1050366058785148999"
-    if (newPresence?.member?.roles.cache.has(process.env.ROLE_ID!)) { // TODO: change ID for correct server role // for testing : "1050366058785148999"
+
+    if (newPresence?.member?.roles.cache.has(ROLE_ID!)) { 
 
     if (newPresence.status === 'dnd') {
-      // const channel = await client.channels.fetch("1059770183016783962"); // TODO: change id for correct server channel // for testing: '1059770183016783962'
-      const channel = await client.channels.fetch(process.env.CHANNEL_ID!); // TODO: change id for correct server channel // for testing: '1059770183016783962'
+      const channel = await client.channels.fetch(CHANNEL_ID!); 
       if (channel?.type === 'GUILD_TEXT') {
         // Send a message to the text channel
         await channel.send(`Hi ${newPresence.member} 🧘 Would you like to log Deep Work time (y/n)?`);
