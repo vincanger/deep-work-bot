@@ -111,13 +111,13 @@ export async function deepWorkCommand(message: Message) {
       }
     });
 
-    // If the user doesn't respond within 10 seconds, send a message and stop the collector
+    // If the user doesn't respond within 20 seconds, send a message and stop the collector
     collector.on('end', async (_, reason: string) => {
       if (reason === 'time') {
         await message.channel.send('You took too long to respond.');
       }
     });
-  } else if (usersWorkTime) {
+  } else {
     await message.channel.send(
       `Nice 🧙‍♂️! You want to work for: "${usersWorkTime} minutes" \n\n Consider turning off other app notifications and distractions`
     );
@@ -169,7 +169,6 @@ export async function deepWorkWorkingNow(message: Message) {
     console.log('sess: ', sess);
     const session = JSON.parse(sess);
     sessionsArr.push(session.username);
-    console.log('sessionsArr: ', sessionsArr);
   });
   await message.channel.send(`Current Deep Workers: ${sessionsArr ? `💭 ${sessionsArr.join(',')}` : '🧹 nobody'}`);
 }
